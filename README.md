@@ -12,5 +12,5 @@ You need to,
 - Implement the k-means++ algorithm. You are provided with the skeleton of the code with main functions to be implemented (Problem5.py file in assignment directory). Submit the source code (documented!) of your implementation.
 - Cluster the modified Iris dataset with with two features explained above. Run your algorithm 50 times over the data with different values of clusters k = 1,2,...,5 and plot the accuracies (x and y axes should be the number of clusters and the clustering objective, respectively).
 - Based on the above plot, decide the number of final clusters and justify your answer. For the chosen number of clusters,
-1. Create a plot showing how objective changes with number of iterations.
-2. Create a plot with the data colored by assignment, and the cluster centers.
+  1. Create a plot showing how objective changes with number of iterations.
+  2. Create a plot with the data colored by assignment, and the cluster centers.
