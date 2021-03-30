@@ -1,6 +1,6 @@
 # *k*-means clustering
 
-Here we will implement the k-means++ algorithm in Python. We will then use it to cluster Iris dataset from the UCI Machine Learning Repository. The data is contained the ```iris.data``` file under "Data Folder", while the file ```iris.names``` contains a description of the data. The features **x** are given as the first four comma-separated values in each row in the data file. The labels *y* are the last entry in each row, but we do NOT need the class label as it is unknown for clustering.
+Here we will implement the *k*-means++ algorithm in Python. We will then use it to cluster Iris dataset from the UCI Machine Learning Repository. The data is contained the ```iris.data``` file under "Data Folder", while the file ```iris.names``` contains a description of the data. The features **x** are given as the first four comma-separated values in each row in the data file. The labels *y* are the last entry in each row, but we do NOT need the class label as it is unknown for clustering.
 1. ```sepal length``` (cm)
 2. ```sepal width``` (cm)
 3. ```petal length``` (cm)
