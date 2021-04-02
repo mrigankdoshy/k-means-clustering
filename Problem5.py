@@ -1,5 +1,23 @@
 import numpy as np
-import scipt as sp
+import scipy as sp
+from sklearn import datasets
+from matplotlib import pyplot as plt
+
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+
+# Dividng sepal length / sepal width and petal length / petal width
+for i in range(0, len(X)):
+    X[i][0] /= X[i][1]
+    X[i][2] /= X[i][3]
+
+# Using only two features
+data = X[:, [0, 2]]
+
+# Plot shoing the data points in 3 clusters
+plt.scatter(data[:, 0], data[:, 1], c=y, edgecolor='k')
+plt.show()
 
 
 def k_init(X, k):
