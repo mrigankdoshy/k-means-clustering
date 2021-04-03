@@ -102,10 +102,11 @@ def k_means_pp(X, k, max_iter):
 
     # Call k_init() to initialize the centers
     initialized_centers = k_init(X, k)
-    print("Init centers: ", initialized_centers, "\n")
+
     # Call assign_data2clusters()
     data_map = assign_data2clusters(X, initialized_centers)
-    print("Data map: ", data_map, "\n")
+    clusters = np.zeros(len(data))
+    updated_centroids = initialized_centers
 
 
 def assign_data2clusters(X, C):
@@ -162,7 +163,19 @@ def compute_objective(X, C):
     accuracy: float
         The objective for the given assigments
     """
-    pass
+
+    distance_objective = [[0 for x in range(len(C))] for y in range(len(X))]
+    sum = 0
+
+    for i in range(len(X)):
+        for j in range(len(C)):
+            # Calculate distance
+            distance_objective[i][j] = math.dist(X[i], C[j])
+        for k in range(len(C)):
+            distances = np.array(distance_objective[i])
+            # Squared sum
+            sum += (min(distances)) ** 2
+    return sum
 
 
 centroids = []
