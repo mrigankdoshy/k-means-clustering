@@ -221,18 +221,15 @@ for x in range(len(data)):
         if data_map_3[x][y] == 1:
             clusters_3[x] = y
 
-a = 0
-points = [data[j] for j in range(len(data)) if clusters_3[j] == a]
+points = [data[j] for j in range(len(data)) if clusters_3[j] == 0]
 points = np.array(points)
 plt.scatter(points[:, 0], points[:, 1], c='r')
 
-a = 1
-points = [data[j] for j in range(len(data)) if clusters_3[j] == a]
+points = [data[j] for j in range(len(data)) if clusters_3[j] == 1]
 points = np.array(points)
 plt.scatter(points[:, 0], points[:, 1], c='b')
 
-a = 2
-points = [data[j] for j in range(len(data)) if clusters_3[j] == a]
+points = [data[j] for j in range(len(data)) if clusters_3[j] == 2]
 points = np.array(points)
 plt.scatter(points[:, 0], points[:, 1], c='g')
 
