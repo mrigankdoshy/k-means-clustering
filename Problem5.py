@@ -203,7 +203,6 @@ def compute_objective(X, C):
 centroids = []
 for k in range(1, 6):
     centroids.append(k_means_pp(data, k, 50))
-    objectives.append(compute_objective(data, centroids[k]))
 
 objectives = []
 for k in range(0, 5):
@@ -212,3 +211,32 @@ for k in range(0, 5):
 plt.plot(objectives)
 plt.show()
 plt.clf()
+
+# Plot of data points in clusters and their centers for k=3.
+data_map_3 = assign_data2clusters(data, centroids[2])
+
+clusters_3 = np.zeros(len(data))
+for x in range(len(data)):
+    for y in range(len(centroids[2])):
+        if data_map_3[x][y] == 1:
+            clusters_3[x] = y
+
+a = 0
+points = [data[j] for j in range(len(data)) if clusters_3[j] == a]
+points = np.array(points)
+plt.scatter(points[:, 0], points[:, 1], c='r')
+
+a = 1
+points = [data[j] for j in range(len(data)) if clusters_3[j] == a]
+points = np.array(points)
+plt.scatter(points[:, 0], points[:, 1], c='b')
+
+a = 2
+points = [data[j] for j in range(len(data)) if clusters_3[j] == a]
+points = np.array(points)
+plt.scatter(points[:, 0], points[:, 1], c='g')
+
+centroids3 = np.array(centroids[2])
+plt.scatter(centroids3[:, 0], centroids3
+            [:, 1], s=200, c='black', marker='+')
+plt.show()
