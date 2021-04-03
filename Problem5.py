@@ -36,7 +36,44 @@ def k_init(X, k):
     init_centers: array (k, d)
         The initialize centers for kmeans++
     """
-    pass
+    minimum_distance = [[0 for x in range(1)] for y in range(len(X))]
+    centroids = np.empty((k, 2))
+    # Take the first center randomly
+    centroids[0] = data[np.random.randint(0, len(X)-1)]
+
+    if (k == 1):
+        return centroids
+    for i in range(1, k):
+        distance = [[0 for x in range(i)] for y in range(len(X))]
+        for j in range(0, len(X)):
+            empty = []
+            for m in range(0, i):
+                # Find distance between each point and each centroid
+                distance[j][m] = dist(X[j, :], centroids[m])
+                if (m == 0):
+                    minimum_distance[j][0] = distance[j][m]
+                else:
+                    for alpha in range(0, m+1):
+                        empty.append(distance[j][alpha])
+                    # Take minimum distance for multiple centroids
+                    minimum_distance[j][0] = min(empty)
+        for n in range(0, len(X)):
+            # Square of distance
+            minimum_distance[n][0] = minimum_distance[n][0] ** 2
+        for n in range(1, len(X)):
+            # Cumulative distance (cdf)
+            minimum_distance[n][0] += minimum_distance[n-1][0]
+
+        # Pick a number at random
+        new = np.random.randint(0, int(minimum_distance[len(X)-1][0]))
+        count = 0
+        while (1):
+            if (new <= minimum_distance[counter][0]):
+                break
+            else:
+                count += 1
+        centroids[i] = X[count, :]
+    return centroids
 
 
 def k_means_pp(X, k, max_iter):
