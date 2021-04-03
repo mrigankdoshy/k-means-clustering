@@ -108,6 +108,28 @@ def k_means_pp(X, k, max_iter):
     clusters = np.zeros(len(data))
     updated_centroids = initialized_centers
 
+    objective = []
+    # Calculate initial objective
+    objective.append(compute_objective(X, updated_centroids))
+
+    for i in range(0, max_iter):
+        # Assign data points for each iteration
+        data_map = assign_data2clusters(X, updated_centroids)
+
+        for x in range(len(X)):
+            for y in range(k):
+                if (data_map[x][y] == 1):
+                    clusters[x] = y
+        for a in range(k):
+            updated_centroids[a] = np.mean(
+                [X[j] for j in range(len(X)) if clusters[j] == a], axis=0)
+        # Compute objective for each iteration
+        objective.append(compute_objective(X, updated_centroids))
+    plt.plot(objective)
+    plt.show()
+
+    return updated_centroids
+
 
 def assign_data2clusters(X, C):
     """ Assignments of data to the clusters
