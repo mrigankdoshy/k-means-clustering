@@ -1,5 +1,6 @@
 import numpy as np
 import scipy as sp
+import math
 from sklearn import datasets
 from matplotlib import pyplot as plt
 
@@ -49,7 +50,7 @@ def k_init(X, k):
             empty = []
             for m in range(0, i):
                 # Find distance between each point and each centroid
-                distance[j][m] = dist(X[j, :], centroids[m])
+                distance[j][m] = math.dist(X[j, :], centroids[m])
                 if (m == 0):
                     minimum_distance[j][0] = distance[j][m]
                 else:
@@ -68,7 +69,7 @@ def k_init(X, k):
         new = np.random.randint(0, int(minimum_distance[len(X)-1][0]))
         count = 0
         while (1):
-            if (new <= minimum_distance[counter][0]):
+            if (new <= minimum_distance[count][0]):
                 break
             else:
                 count += 1
@@ -98,7 +99,13 @@ def k_means_pp(X, k, max_iter):
     final_centers: array, shape (k, d)
         The final cluster centers
     """
-    pass
+
+    # Call k_init() to initialize the centers
+    initialized_centers = k_init(X, k)
+
+    # Call assign_data2clusters()
+
+    return initialized_centers
 
 
 def assign_data2clusters(X, C):
@@ -136,3 +143,8 @@ def compute_objective(X, C):
         The objective for the given assigments
     """
     pass
+
+
+centroids = []
+for k in range(1, 6):
+    centroids.append(k_means_pp(data, k, 50))
