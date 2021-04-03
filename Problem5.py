@@ -102,10 +102,10 @@ def k_means_pp(X, k, max_iter):
 
     # Call k_init() to initialize the centers
     initialized_centers = k_init(X, k)
-
+    print("Init centers: ", initialized_centers, "\n")
     # Call assign_data2clusters()
-
-    return initialized_centers
+    data_map = assign_data2clusters(X, initialized_centers)
+    print("Data map: ", data_map, "\n")
 
 
 def assign_data2clusters(X, C):
@@ -124,7 +124,27 @@ def assign_data2clusters(X, C):
         The binary matrix A which shows the assignments of data points (X) to
         the input centers (C).
     """
-    pass
+
+    clusters = np.zeros(len(data))
+    data_map = [[0 for x in range(len(C))] for y in range(len(X))]
+    distance = data_map
+
+    for i in range(len(X)):
+        for j in range(len(C)):
+            # Calculate distance from point to all centroids
+            distance[i][j] = math.dist(X[i], C[j])
+        for k in range(len(C)):
+            distances = np.array(distance[i])
+            # Take argmin to assign it to a cluster
+        clusters[i] = np.argmin(distances)
+    clusters = clusters.astype(int)
+
+    # Convert the clusters into a binary data map
+    for i in range(0, len(X)):
+        for j in range(len(C)):
+            if (clusters[i] == j):
+                data_map[i][j] = 1
+    return data_map
 
 
 def compute_objective(X, C):
