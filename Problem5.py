@@ -203,3 +203,12 @@ def compute_objective(X, C):
 centroids = []
 for k in range(1, 6):
     centroids.append(k_means_pp(data, k, 50))
+    objectives.append(compute_objective(data, centroids[k]))
+
+objectives = []
+for k in range(0, 5):
+    objectives.append(compute_objective(data, centroids[k]))
+
+plt.plot(objectives)
+plt.show()
+plt.clf()
