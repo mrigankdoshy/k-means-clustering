@@ -16,10 +16,10 @@ Here we will implement the *k*-means++ algorithm in Python. We will then use it 
 
 ## Results
 
-#### Plot of x1, x2 (iris data set)
+### Plot of x1, x2 (iris data set)
 <img src="./assets/Figure_1.png" height="400">
 
-#### Plot of objective function vs number of iterations
+### Plot of objective function vs number of iterations
 <p float="left">
   <img src="./assets/Figure_2.png" width="400" />
   <img src="./assets/Figure_3.png" width="400" /> 
@@ -32,12 +32,12 @@ Here we will implement the *k*-means++ algorithm in Python. We will then use it 
   <img src="./assets/Figure_6.png" width="400" />
 </p>
 
-#### Plot of accuracies
+### Plot of accuracies
 _x-axis_ is the number of clusters (it says 0,1,2,3,4 because I named them that way, but actually those are 5 (1,2,3,4,5) clusters represented by 0,1,2,3,4. _y_ is the clustering objective
 
 <img src="./assets/Figure_7.png" height="400">
 
-#### Plot of data
+### Plot of data
 Colored with assignments and the cluster centers (the centers are represented by the ‘+’ symbol)
 
 <img src="./assets/Figure_8.png" height="400">
